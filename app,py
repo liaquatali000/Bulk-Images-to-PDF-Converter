@@ -1,0 +1,169 @@
+from fpdf import FPDF
+from PIL import Image
+import os
+from tqdm import tqdm
+import logging
+from datetime import datetime
+import time
+
+def setup_logging():
+    if not os.path.exists('logs'):
+        os.makedirs('logs')
+    
+    log_filename = f'logs/conversion_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log'
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(log_filename),
+            logging.StreamHandler()
+        ]
+    )
+    return log_filename
+
+def get_image_files(folder):
+    """Get all supported image files from the folder with improved detection."""
+    image_extensions = {'.jpg', '.jpeg', '.png', '.bmp', '.gif', '.tiff', 
+                       '.JPG', '.JPEG', '.PNG', '.BMP', '.GIF', '.TIFF'}
+    image_files = []
+    
+    # First, let's log what we're searching through
+    logging.info(f"Scanning directory: {folder}")
+    
+    try:
+        # Using os.listdir() instead of os.walk() for single directory
+        for filename in os.listdir(folder):
+            file_path = os.path.join(folder, filename)
+            if os.path.isfile(file_path):
+                # Get the file extension (including the dot)
+                _, ext = os.path.splitext(filename)
+                if ext in image_extensions:
+                    try:
+                        # Verify it's actually an image by trying to open it
+                        with Image.open(file_path) as img:
+                            image_files.append(file_path)
+                            logging.info(f"Found valid image: {filename}")
+                    except Exception as e:
+                        logging.warning(f"Skipped file {filename}: Not a valid image file ({str(e)})")
+    except Exception as e:
+        logging.error(f"Error scanning directory: {str(e)}")
+    
+    # Log all found files
+    logging.info(f"Total files in directory: {len(os.listdir(folder))}")
+    logging.info(f"Total image files found: {len(image_files)}")
+    
+    # Print file extensions found
+    extensions_found = set(os.path.splitext(f)[1].lower() for f in image_files)
+    logging.info(f"Image extensions found: {extensions_found}")
+    
+    return sorted(image_files)
+
+def convert_single_image_to_pdf(image_path, output_folder):
+    """Convert a single image to PDF."""
+    try:
+        # Create PDF for single image
+        pdf = FPDF()
+        pdf.add_page()
+        
+        # Process image (rotate if needed)
+        with Image.open(image_path) as img:
+            width, height = img.size
+            if width > height:
+                logging.info(f"Rotating landscape image: {image_path}")
+                img = img.transpose(Image.Rotate.ROTATE_270)
+                temp_path = f"temp_{os.path.basename(image_path)}"
+                img.save(temp_path)
+                pdf.image(temp_path, 0, 0, 210, 297)
+                os.remove(temp_path)
+            else:
+                pdf.image(image_path, 0, 0, 210, 297)
+        
+        # Generate output filename
+        base_name = os.path.splitext(os.path.basename(image_path))[0]
+        output_path = os.path.join(output_folder, f"{base_name}.pdf")
+        
+        # Ensure unique filename
+        counter = 1
+        while os.path.exists(output_path):
+            output_path = os.path.join(output_folder, f"{base_name}_{counter}.pdf")
+            counter += 1
+        
+        pdf.output(output_path, "F")
+        return True, output_path
+    
+    except Exception as e:
+        logging.error(f"Error converting {image_path}: {str(e)}")
+        return False, None
+
+def convert_all_images(input_folder):
+    """Main function to convert all images to PDFs."""
+    # Setup logging
+    log_file = setup_logging()
+    logging.info("Starting image conversion process...")
+    
+    # Create output folder
+    output_folder = "output"
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+        logging.info(f"Created output directory: {output_folder}")
+    
+    # Get all image files
+    print("Scanning for image files...")
+    image_files = get_image_files(input_folder)
+    total_images = len(image_files)
+    
+    if not image_files:
+        logging.warning("No image files found in the specified folder!")
+        return
+    
+    print(f"\nFound {total_images} image files")
+    print("Starting conversion process...")
+    
+    # Initialize counters
+    successful_conversions = 0
+    failed_conversions = 0
+    
+    # Process each image with progress bar
+    for idx, image_path in enumerate(tqdm(image_files, desc="Converting images", unit="file")):
+        logging.info(f"Processing image {idx + 1}/{total_images}: {image_path}")
+        
+        success, output_path = convert_single_image_to_pdf(image_path, output_folder)
+        
+        if success:
+            successful_conversions += 1
+            logging.info(f"Successfully converted to: {output_path}")
+        else:
+            failed_conversions += 1
+            logging.error(f"Failed to convert: {image_path}")
+        
+        # Add a small delay to prevent resource exhaustion
+        time.sleep(0.1)
+    
+    # Log summary
+    summary = f"""
+Conversion Summary:
+=================
+Total files in directory: {len(os.listdir(input_folder))}
+Total image files found: {total_images}
+Successful conversions: {successful_conversions}
+Failed conversions: {failed_conversions}
+Log file location: {log_file}
+"""
+    print(summary)
+    logging.info(summary)
+
+if __name__ == "__main__":
+    try:
+        print("Image to PDF Converter")
+        print("=====================")
+        
+        # Get current directory as input folder
+        current_folder = os.getcwd()
+        convert_all_images(current_folder)
+        
+    except KeyboardInterrupt:
+        logging.warning("\nProcess interrupted by user")
+        print("\nConversion process interrupted. Check logs for details.")
+    except Exception as e:
+        logging.error(f"Fatal error: {str(e)}")
+        print(f"\nAn error occurred. Check logs for details.")
