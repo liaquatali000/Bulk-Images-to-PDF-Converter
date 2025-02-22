@@ -1,114 +1,66 @@
-# Bulk Image to PDF Converter
+# Image & PDF Converter
 
-A robust Python script for bulk converting images (PNG, JPG, etc.) to PDF files with progress tracking, logging, and duplicate prevention.
+## Overview
 
-## 🌟 Features
+**Image & PDF Converter** is a free and open-source tool designed to help users easily convert between image and PDF formats. This project is developed to assist anyone in managing document conversions efficiently.
 
-- **Multi-Format Support**: Converts JPG, JPEG, PNG, BMP, GIF, and TIFF images
-- **Smart Processing**: 
-  - Automatically rotates landscape images
-  - Skips already converted images
-  - Maintains original image quality
-- **Progress Tracking**:
-  - Real-time progress bar
-  - Detailed conversion statistics
-  - Comprehensive logging system
-- **Error Handling**:
-  - Robust error management
-  - Detailed error logging
-  - Continues processing even if some files fail
-- **Output Management**:
-  - Organized output folder structure
-  - Prevents duplicate file names
-  - Preserves original file names
+This tool is available for free use, modification, and sharing to benefit the community.
 
-## 📋 Requirements
+## Features in This Version
 
-- Python 3.6+
-- Required packages:
-  ```
-  fpdf
-  Pillow
-  tqdm
-  ```
+### 🔹 Merge Multiple Images into One PDF Option
+Allows users to combine multiple images into a **single PDF file** instead of separate PDFs.
 
-## 🚀 Installation
+### 🔹 Dark Mode / Light Mode Toggle
+Provides an option to switch between **dark mode and light mode** for a better user experience.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/bulk-image-to-pdf-converter.git
-   cd bulk-image-to-pdf-converter
-   ```
+### 🔹 Allow Image Compression Before PDF Conversion
+Reduces file size by compressing images before adding them to a PDF for **smaller, optimized documents**.
 
-2. Install required packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Upcoming Features
 
-## 💻 Usage
+Future updates will introduce more powerful and user-friendly functionalities, including:
 
-1. Place the script in the folder containing your images
-2. Run the script:
-   ```bash
-   python convert_images.py
-   ```
-3. The script will:
-   - Create an 'output' folder for PDFs
-   - Create a 'logs' folder for logging
-   - Convert all new images to PDFs
-   - Skip previously converted images
+### 🔹 Batch Processing for Large File Sets
+Enable users to queue multiple PDFs or images for conversion **without manual selection each time**.
 
-## 📁 Directory Structure
+### 🔹 OCR (Optical Character Recognition) for PDFs
+Allow users to **extract text** from images or scanned PDFs using OCR technology.
 
-```
-your-folder/
-│
-├── convert_images.py          # Main script
-├── requirements.txt          # Package requirements
-├── images/                   # Your source images
-│   ├── image1.jpg
-│   ├── image2.png
-│   └── ...
-│
-├── output/                   # Generated PDFs (created automatically)
-│   ├── image1.pdf
-│   ├── image2.pdf
-│   └── ...
-│
-└── logs/                     # Log files (created automatically)
-    └── conversion_YYYYMMDD_HHMMSS.log
-```
+### 🔹 Multi-language Support
+Add language selection for UI, making the app accessible to a **global audience**.
 
-## 📝 Log Files
+### 🔹 Support for More Image Formats
+Extend compatibility to **HEIC, SVG, and RAW formats** for better image processing.
 
-The script generates detailed log files containing:
-- List of processed files
-- Conversion statistics
-- Error messages (if any)
-- Processing duration
-- Skipped files information
+### 🔹 Watermarking on Converted Files
+Provide an option to **add watermarks** (text or image) to PDF or image outputs.
 
-## ⚙️ Configuration
+### 🔹 Password Protection for PDFs
+Allow users to **encrypt PDFs with a password** before saving them.
 
-The script uses default A4 size (210x297mm) for PDFs. To modify this or other settings, edit the constants at the beginning of the script.
+### 🔹 Cloud Integration (Google Drive, Dropbox)
+Enable users to **save or import** files directly from **Google Drive, Dropbox, or OneDrive**.
 
-## 🔍 Error Handling
+### 🔹 Preview PDF Pages Before Conversion
+Show a **thumbnail preview of PDF pages** before conversion, allowing users to choose specific pages.
 
-- Invalid image files are automatically skipped
-- Processing continues even if individual conversions fail
-- All errors are logged with detailed information
-- Summary report shows successful and failed conversions
+### 🔹 Convert Specific Pages from PDF
+Give users the ability to **select and extract specific pages** instead of converting the entire PDF.
 
-## 🤝 Contributing
+### 🔹 Save Last Used Settings
+Remember the last used **conversion settings and output folder** for faster operation.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### 🔹 Auto-update Feature
+Check for new versions automatically and **offer updates** when available.
 
-## 🙏 Acknowledgments
+## Contributing
+This is an open-source project, and contributions are welcome! If you have suggestions, bug reports, or improvements, feel free to submit a pull request or open an issue.
 
-- FPDF library for PDF creation
-- Pillow library for image processing
-- tqdm library for progress bars
+## License
+This project is released under an **open-source license** and is available for free use by all.
+
+---
+
+Enjoy using **Image & PDF Converter**! 🚀
+
