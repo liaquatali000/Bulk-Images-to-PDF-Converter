@@ -1,5 +1,5 @@
 /*
- * This file is part of Image & PDF Converter.
+ * This file is part of Images and PDF Converter.
  *
  * Image & PDF Converter is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
