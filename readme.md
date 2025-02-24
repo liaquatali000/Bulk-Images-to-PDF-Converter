@@ -1,4 +1,4 @@
-# Image & PDF Converter
+# Images and PDF Converter
 
 ## Overview
 
