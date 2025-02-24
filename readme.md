@@ -58,9 +58,11 @@ Check for new versions automatically and **offer updates** when available.
 This is an open-source project, and contributions are welcome! If you have suggestions, bug reports, or improvements, feel free to submit a pull request or open an issue.
 
 ## License
-This project is released under an **open-source license** and is available for free use by all.
+This project is released under the GNU General Public License version 3 (GPL-3.0). Full license details can be found in the LICENSE file.
+
+## Contact
+For further inquiries or support, please [open an issue](URL_to_GitHub_issues_page) on our GitHub repository.
 
 ---
 
 Enjoy using **Image & PDF Converter**! 🚀
-
