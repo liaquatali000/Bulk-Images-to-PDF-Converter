@@ -1,68 +1,97 @@
-# Images and PDF Converter
+# 📄 Images and PDF Converter
 
-## Overview
+## 🚀 Overview
+**Images and PDF Converter** is a free and open-source tool that allows users to seamlessly convert between images and PDFs. The software provides an intuitive graphical interface built using Python’s Tkinter, enabling easy file selection, batch processing, and format conversion.
 
-**Image & PDF Converter** is a free and open-source tool designed to help users easily convert between image and PDF formats. This project is developed to assist anyone in managing document conversions efficiently.
+## 🎯 Features
 
-This tool is available for free use, modification, and sharing to benefit the community.
+✅ **Convert Images to PDF** - Convert multiple image files into PDF format.  
+✅ **Convert PDF to Images** - Extract pages from a PDF and save them as images.  
+✅ **Batch File Processing** - Select multiple images or PDFs and process them all at once.  
+✅ **Supported Image Formats** - Works with **JPG, PNG, BMP, GIF, WebP, ICO, PPM, PGM, PBM, and TIFF**.  
+✅ **Output Format Selection** - Choose from PNG, JPG, WEBP, and BMP for image exports.  
+✅ **User-Friendly Interface** - Simple GUI for easy file selection, output path selection, and progress tracking.  
+✅ **Progress Bar & Logging** - View real-time progress updates and error messages.  
 
-## Features in This Version
+## 📌 Requirements
 
-### 🔹 Merge Multiple Images into One PDF Option
-Allows users to combine multiple images into a **single PDF file** instead of separate PDFs.
+Before running the application, ensure you have the following installed:
 
-### 🔹 Dark Mode / Light Mode Toggle
-Provides an option to switch between **dark mode and light mode** for a better user experience.
+- Python 3.8 or later
+- Required dependencies (install using `pip`)
 
-### 🔹 Allow Image Compression Before PDF Conversion
-Reduces file size by compressing images before adding them to a PDF for **smaller, optimized documents**.
+## 🛠 Installation
 
-## Upcoming Features
+### 1⃣ Clone the Repository
+```bash
+git clone https://github.com/liaquatali000/Images-and-PDF-Converter.git
+cd Images-and-PDF-Converter
+```
 
-Future updates will introduce more powerful and user-friendly functionalities, including:
+### 2⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-### 🔹 Batch Processing for Large File Sets
-Enable users to queue multiple PDFs or images for conversion **without manual selection each time**.
+### 3⃣ Run the Application
+```bash
+python main.py
+```
 
-### 🔹 OCR (Optical Character Recognition) for PDFs
-Allow users to **extract text** from images or scanned PDFs using OCR technology.
+## 🖥️ Usage Instructions
 
-### 🔹 Multi-language Support
-Add language selection for UI, making the app accessible to a **global audience**.
+1. **Open the Application**  
+   - Run `main.py` to launch the graphical interface.
 
-### 🔹 Support for More Image Formats
-Extend compatibility to **HEIC, SVG, and RAW formats** for better image processing.
+2. **Select a Conversion Mode**  
+   - **Images to PDF** - Converts selected image files into PDF format.  
+   - **PDF to Images** - Extracts images from a PDF and saves them in the selected format.
 
-### 🔹 Watermarking on Converted Files
-Provide an option to **add watermarks** (text or image) to PDF or image outputs.
+3. **Choose Files for Conversion**  
+   - Click **"Select Files"** and pick the images or PDFs you want to process.
 
-### 🔹 Password Protection for PDFs
-Allow users to **encrypt PDFs with a password** before saving them.
+4. **Set an Output Folder**  
+   - Click **"Select Output Location"** to specify where the converted files should be saved.
 
-### 🔹 Cloud Integration (Google Drive, Dropbox)
-Enable users to **save or import** files directly from **Google Drive, Dropbox, or OneDrive**.
+5. **Start Conversion**  
+   - Click **"Convert Files"** to begin the process.  
+   - A progress bar will display real-time updates.
 
-### 🔹 Preview PDF Pages Before Conversion
-Show a **thumbnail preview of PDF pages** before conversion, allowing users to choose specific pages.
+6. **View Logs**  
+   - The log window will show conversion success messages or errors.
 
-### 🔹 Convert Specific Pages from PDF
-Give users the ability to **select and extract specific pages** instead of converting the entire PDF.
+## 📂 Project Structure
 
-### 🔹 Save Last Used Settings
-Remember the last used **conversion settings and output folder** for faster operation.
+```
+📦 Images-and-PDF-Converter
+ ┗📄 main.py           # Main application script
+ ┗📄 requirements.txt  # Dependencies for installation
+ ┗📄 LICENSE.txt       # GNU General Public License (GPL-3.0)
+ ┗📄 README.md         # Documentation file
+ ┗📄 .gitignore        # Git ignored files
+```
 
-### 🔹 Auto-update Feature
-Check for new versions automatically and **offer updates** when available.
+## 🏋️ Supported Formats
 
-## Contributing
-This is an open-source project, and contributions are welcome! If you have suggestions, bug reports, or improvements, feel free to submit a pull request or open an issue.
+| Feature            | Supported Formats |
+|--------------------|------------------|
+| **Image to PDF**  | JPG, PNG, BMP, GIF, TIFF, WebP, ICO, PPM, PGM, PBM |
+| **PDF to Image**  | PNG, JPG, BMP, WEBP |
 
-## License
-This project is released under the GNU General Public License version 3 (GPL-3.0). Full license details can be found in the LICENSE file.
+## 📝 License
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**. See the full license details in the [LICENSE.txt](LICENSE.txt) file.
 
-## Contact
-For further inquiries or support, please [open an issue](URL_to_GitHub_issues_page) on our GitHub repository.
+## 🤝 Contributing
+Contributions are welcome! If you’d like to improve this project:
+1. **Fork the repository**  
+2. **Create a new feature branch**  
+3. **Commit your changes**  
+4. **Submit a pull request**  
+
+## 💬 Contact
+For any issues, feedback, or suggestions, please open an [issue](https://github.com/liaquatali000/Images-and-PDF-Converter/issues) on the GitHub repository or contact me at liaqatali.it@outlook.com
 
 ---
 
-Enjoy using **Image & PDF Converter**! 🚀
+### 🎉 Enjoy using **Images and PDF Converter**! 🚀
+
